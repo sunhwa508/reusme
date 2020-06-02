@@ -124,11 +124,11 @@ window.addEventListener("scroll", (e) => {
     navdivs[0].classList.add("active");
     navdivs[1].classList.remove("active");
     navdivs[2].classList.remove("active");
-  } else if (scrollLocation < 900) {
+  } else if (scrollLocation < 1200) {
     navdivs[0].classList.remove("active");
     navdivs[1].classList.add("active");
     navdivs[2].classList.remove("active");
-  } else if (scrollLocation > 900) {
+  } else if (scrollLocation > 1200) {
     navdivs[0].classList.remove("active");
     navdivs[1].classList.remove("active");
     navdivs[2].classList.add("active");
