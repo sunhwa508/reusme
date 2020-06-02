@@ -51,14 +51,14 @@ tl.fromTo(hero, 1, { height: "0%" }, { height: "80%", ease: Power2.easeInOut })
     headline,
     1.2,
     { x: "-300%" },
-    { x: "0%", ease: Power2.easeInOut },
+    { x: "0", ease: Power2.easeInOut },
     "-=1.2"
   )
   .fromTo(
     slider,
     1.2,
     { x: "-200%" },
-    { x: "0%", ease: Power2.easeInOut },
+    { x: "0", ease: Power2.easeInOut },
     "-=1.2"
   );
 

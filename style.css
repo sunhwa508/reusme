@@ -6,9 +6,12 @@
 }
 html {
   scroll-behavior: smooth;
+  width: 100vw;
 }
 body {
   overflow-x: hidden;
+
+  width: 100vw;
 }
 .page {
   height: 100vh;
@@ -25,6 +28,8 @@ section {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/*intro*/
 .section1 {
   color: white;
   font-size: 2px;
@@ -53,8 +58,8 @@ section {
   position: absolute;
   top: 0;
   left: 0;
-  width: 130%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgb(255, 248, 143);
   z-index: -1;
   transition: all 0.5 ease;
@@ -69,11 +74,13 @@ section {
     -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
     2px 2px 5px #000;
 }
+/*page1*/
 .page1 {
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
   position: relative;
+  height: 100%;
 }
 .right {
   padding: 60px;
@@ -113,7 +120,7 @@ section {
   max-width: 250px;
   height: 250px;
   background-color: rgb(65, 57, 57);
-  margin: 15px;
+  margin: 30px;
   cursor: pointer;
   border-radius: 10px;
   border: 5px solid rgb(240, 240, 240);
@@ -124,8 +131,8 @@ section {
 .contents .content:hover::after {
   content: "";
   position: absolute;
-  width: 240px;
-  height: 240px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
   top: 0;
   left: 0;
@@ -236,6 +243,7 @@ section {
   transform: translate(-50%, -50%);
 }
 
+/*navigation*/
 .nav {
   display: flex;
   flex-direction: row;
@@ -255,32 +263,7 @@ section {
 }
 
 /*media*/
-
 @media (max-width: 700px) {
-  html {
-    width: 100%;
-    height: 100%;
-  }
-
-  header {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
-  header nav {
-    background-color: #8a8989;
-    width: 100vw;
-    height: 50px;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  header nav button {
-    font-size: 2em;
-  }
-  header nav button:hover {
-    color: #cccccc;
-  }
   .contents {
     display: flex;
     flex-direction: column;
@@ -299,4 +282,101 @@ section {
   .cursor.explore-active {
     transform: scale(2);
   }
+  .logotext {
+    font-size: 2rem;
+  }
+  .intro-section {
+    height: 80vh;
+  }
+  .intro-section img {
+    background-color: transparent;
+  }
+
+  .page1 {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100vw;
+  }
+  .right {
+    width: 100%;
+  }
+  .left {
+    width: 100%;
+  }
+  .contact {
+    margin-top: 0;
+  }
+
+  .profile {
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-top: 20px;
+  }
+  .vertical-line {
+    display: none;
+  }
+
+  .skills {
+    margin: 30px 0;
+  }
+
+  .skills ul {
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+  }
+  .skills ul li {
+    font-size: 1em;
+  }
+}
+
+/* footer */
+.page3 {
+  background-color: rgb(252, 247, 189);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+.page3 .icons {
+  display: flex;
+  justify-content: center;
+}
+.page3 .icons a {
+  margin: auto 10px;
+  cursor: pointer;
+  color: rgb(172, 168, 168);
+  font-size: 2rem;
+  transition: 0.5s;
+}
+.page3 .icons:hover a:not(:hover) {
+  opacity: 0.1;
+}
+.page3 .icons a:hover {
+  transform: translateY(-10px);
+  color: black;
+}
+
+#logotext {
+  color: white;
+  z-index: 2;
+}
+
+footer {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+footer p {
+  color: #cccccc;
 }
