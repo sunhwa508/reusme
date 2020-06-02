@@ -10,9 +10,11 @@ html {
 }
 body {
   overflow-x: hidden;
+
   width: 100vw;
 }
 .page {
+  height: 100vh;
   width: 100vw;
 }
 section {
@@ -37,7 +39,7 @@ section {
   font-size: 20px;
 }
 .intro-section {
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -161,6 +163,7 @@ section {
   font-size: 0.5rem;
 }
 .page2 {
+  height: 100vw;
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.8),
     rgb(204, 204, 204)
@@ -207,6 +210,7 @@ section {
 .cursor {
   width: 3rem;
   height: 3rem;
+
   border-radius: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -247,84 +251,24 @@ section {
   position: fixed;
   top: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.589);
+
   padding: 20px;
   cursor: pointer;
   border-radius: 10px;
 }
+.active {
+  padding: 10px;
+  /* background-color: rgb(228, 101, 101); */
+  border-bottom: 4px solid rgb(228, 101, 101);
+  border-radius: 10px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
 .nav a {
   text-decoration: none;
   font-size: 1em;
   padding: 5px;
   color: black;
-}
-
-/*media*/
-@media (max-width: 700px) {
-  .contents {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-  }
-  .content {
-    max-width: 450px;
-    margin-bottom: 100px;
-    border: 5px solid rgb(145, 144, 144);
-  }
-  .cursor.nav-active {
-    transform: scale(1);
-  }
-  .cursor.explore-active {
-    transform: scale(2);
-  }
-  .logotext {
-    font-size: 2rem;
-  }
-  .intro-section {
-    height: 80vh;
-  }
-  .intro-section img {
-    background-color: transparent;
-  }
-  .page1 {
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100vw;
-  }
-  .right {
-    width: 100%;
-  }
-  .left {
-    width: 100%;
-  }
-  .contact {
-    margin-top: 0;
-  }
-  .profile {
-    border-radius: 50%;
-    border: 2px solid white;
-    margin-top: 20px;
-  }
-  .vertical-line {
-    display: none;
-  }
-  .skills {
-    margin: 30px 0;
-  }
-  .skills ul {
-    list-style: none;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-  }
-  .skills ul li {
-    font-size: 1em;
-  }
 }
 
 /* footer */
@@ -370,4 +314,79 @@ footer {
 
 footer p {
   color: rgb(121, 121, 121);
+}
+
+/*media*/
+@media (max-width: 700px) {
+  .contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .content {
+    max-width: 450px;
+    margin-bottom: 100px;
+    border: 5px solid rgb(145, 144, 144);
+  }
+  .cursor.nav-active {
+    transform: scale(1);
+  }
+  .cursor.explore-active {
+    transform: scale(2);
+  }
+  .logotext {
+    font-size: 2rem;
+  }
+  .intro-section {
+    height: 80%;
+  }
+  .intro-section img {
+    background-color: transparent;
+  }
+
+  .page1 {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100vw;
+  }
+  .right {
+    width: 100%;
+  }
+  .left {
+    width: 100%;
+  }
+  .contact {
+    margin-top: 0;
+  }
+
+  .profile {
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-top: 20px;
+  }
+  .vertical-line {
+    display: none;
+  }
+
+  .skills {
+    margin: 30px 0;
+  }
+
+  .skills ul {
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+  }
+  .skills ul li {
+    font-size: 1em;
+  }
+  .page2 {
+    height: 100%;
+  }
 }

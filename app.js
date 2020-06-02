@@ -1,37 +1,37 @@
-//smooth sroll
-function smoothScroll(target, duration) {
-  var target = document.querySelector(target);
-  var targetPosition = target.getBoundingClientRect().top;
-  var startPosition = window.pageYOffset;
-  var distance = targetPosition - startPosition;
-  var startTime = null;
+// //smooth sroll
+// function smoothScroll(target, duration) {
+//   var target = document.querySelector(target);
+//   var targetPosition = target.getBoundingClientRect().top;
+//   var startPosition = window.pageYOffset;
+//   var distance = targetPosition - startPosition;
+//   var startTime = null;
 
-  function animation(currentTime) {
-    if (startTime === null) startTime = currentTime; //부드럽게 보이게 하기 위해
-    var timeElapsed = currentTime - startTime;
-    //진짜 시간과 페이지 로그된 후 시간
-    // console.log(startTime, currentTime);
-    var run = ease(timeElapsed, startPosition, distance, duration);
-    window.scrollTo(0, run);
-    if (timeElapsed < duration) requestAnimationFrame(animation);
-    // console.log("timeElapsed:" + timeElapsed, "duration" + duration);
-  }
+//   function animation(currentTime) {
+//     if (startTime === null) startTime = currentTime; //부드럽게 보이게 하기 위해
+//     var timeElapsed = currentTime - startTime;
+//     //진짜 시간과 페이지 로그된 후 시간
+//     // console.log(startTime, currentTime);
+//     var run = ease(timeElapsed, startPosition, distance, duration);
+//     window.scrollTo(0, run);
+//     if (timeElapsed < duration) requestAnimationFrame(animation);
+//     // console.log("timeElapsed:" + timeElapsed, "duration" + duration);
+//   }
 
-  function ease(t, b, c, d) {
-    t /= d / 2;
-    if (t < 1) return (c / 2) * t * t * t + b;
-    t -= 2;
-    return (c / 2) * (t * t * t + 2) + b;
-  }
-  requestAnimationFrame(animation);
-}
+//   function ease(t, b, c, d) {
+//     t /= d / 2;
+//     if (t < 1) return (c / 2) * t * t * t + b;
+//     t -= 2;
+//     return (c / 2) * (t * t * t + 2) + b;
+//   }
+//   requestAnimationFrame(animation);
+// }
 
-var section1 = document.querySelector(".section1");
-var section2 = document.querySelector(".section2");
+// var section1 = document.querySelector(".section1");
+// var section2 = document.querySelector(".section2");
 
-section1.addEventListener("click", function () {
-  smoothScroll(".section2", 100);
-});
+// section1.addEventListener("click", function () {
+//   smoothScroll(".section2", 100);
+// });
 
 //intro 효과
 const hero = document.querySelector(".intro-section img");
@@ -57,7 +57,7 @@ tl.fromTo(hero, 1, { height: "0%" }, { height: "80%", ease: Power2.easeInOut })
   .fromTo(
     slider,
     1.2,
-    { x: "-200%" },
+    { x: "200%" },
     { x: "0", ease: Power2.easeInOut },
     "-=1.2"
   );
@@ -98,3 +98,17 @@ function activeCursor(e) {
 
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
+
+//nav
+const navdivs = document.querySelectorAll(".navdiv");
+
+console.log(navdivs);
+navdivs.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    const active = document.querySelector(".active");
+    if (active) {
+      active.classList.remove("active");
+    }
+    e.target.classList.add("active");
+  });
+});
