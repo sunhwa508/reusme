@@ -163,6 +163,7 @@ section {
   font-size: 0.5rem;
 }
 .page2 {
+  height: 100vw;
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.8),
     rgb(252, 247, 189)
@@ -341,8 +342,7 @@ section {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
+  height: 30%;
 }
 .page3 .icons {
   display: flex;
