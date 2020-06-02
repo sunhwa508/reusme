@@ -166,7 +166,7 @@ section {
   height: 100vw;
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.8),
-    rgb(252, 247, 189)
+    rgb(204, 204, 204)
   );
 }
 .page2 h1 {
@@ -337,12 +337,11 @@ section {
 
 /* footer */
 .page3 {
-  background-color: rgb(252, 247, 189);
+  background-color: rgb(204, 204, 204);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 30%;
 }
 .page3 .icons {
   display: flex;
@@ -351,7 +350,7 @@ section {
 .page3 .icons a {
   margin: auto 10px;
   cursor: pointer;
-  color: rgb(172, 168, 168);
+  color: rgb(121, 121, 121);
   font-size: 2rem;
   transition: 0.5s;
 }
@@ -369,7 +368,7 @@ section {
 }
 
 footer {
-  height: 100px;
+  height: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -378,5 +377,5 @@ footer {
 }
 
 footer p {
-  color: #cccccc;
+  color: rgb(121, 121, 121);
 }
