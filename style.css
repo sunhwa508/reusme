@@ -10,11 +10,9 @@ html {
 }
 body {
   overflow-x: hidden;
-
   width: 100vw;
 }
 .page {
- 
   width: 100vw;
 }
 section {
@@ -163,7 +161,6 @@ section {
   font-size: 0.5rem;
 }
 .page2 {
-  height: 100vw;
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.8),
     rgb(204, 204, 204)
@@ -210,7 +207,6 @@ section {
 .cursor {
   width: 3rem;
   height: 3rem;
-
   border-radius: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -292,7 +288,6 @@ section {
   .intro-section img {
     background-color: transparent;
   }
-
   .page1 {
     background-color: rgb(255, 255, 255);
     display: flex;
@@ -309,7 +304,6 @@ section {
   .contact {
     margin-top: 0;
   }
-
   .profile {
     border-radius: 50%;
     border: 2px solid white;
@@ -318,11 +312,9 @@ section {
   .vertical-line {
     display: none;
   }
-
   .skills {
     margin: 30px 0;
   }
-
   .skills ul {
     list-style: none;
     padding: 10px;
