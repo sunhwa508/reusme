@@ -163,7 +163,6 @@ section {
   font-size: 0.5rem;
 }
 .page2 {
-  height: 100vw;
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.8),
     rgb(204, 204, 204)
