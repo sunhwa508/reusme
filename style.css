@@ -6,17 +6,11 @@
 }
 html {
   scroll-behavior: smooth;
-  width: 100vw;
 }
 body {
   overflow-x: hidden;
+}
 
-  width: 100vw;
-}
-.page {
-  height: 100vh;
-  width: 100vw;
-}
 section {
   /* The image used */
   background-image: url("http://oranjebitter-rotterdam.nl/images/ob-stayhome.png");
@@ -58,8 +52,8 @@ section {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 60vh;
   background-color: rgb(255, 248, 143);
   z-index: -1;
   transition: all 0.5 ease;
@@ -75,6 +69,12 @@ section {
     2px 2px 5px #000;
 }
 /*page1*/
+.wrapper {
+  padding: 0 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .page1 {
   background-color: rgb(255, 255, 255);
   display: flex;
@@ -82,23 +82,24 @@ section {
   position: relative;
   height: 100%;
 }
-.right {
+
+.page1 .right {
   padding: 60px;
   width: 50%;
 }
-.contact {
+.page1 .contact {
   margin-top: 20px;
 }
-.left {
+.page1 .left {
   padding: 60px;
   width: 50%;
 }
-.profile {
+.page1 .profile {
   border-radius: 50%;
   border: 2px solid white;
   margin-top: 20px;
 }
-.vertical-line {
+.page1 .vertical-line {
   position: absolute;
   border-left: 2px solid rgb(134, 134, 134);
   height: 80%;
@@ -112,12 +113,10 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   padding: 40px;
-  width: 100%;
 }
 .content {
-  max-width: 250px;
+  max-width: 350px;
   height: 250px;
   background-color: rgb(65, 57, 57);
   margin: 30px;
@@ -162,6 +161,7 @@ section {
   padding: 5px 0;
   font-size: 0.5rem;
 }
+
 .page2 {
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.8),
@@ -250,15 +250,16 @@ section {
   position: fixed;
   top: 0;
   right: 0;
-
   padding: 20px;
+  border-radius: 10px;
   cursor: pointer;
   border-radius: 10px;
 }
 .active {
-  padding: 10px;
+  padding: 5px 10px;
+
   /* background-color: rgb(228, 101, 101); */
-  border-bottom: 4px solid rgb(228, 101, 101);
+
   border-radius: 10px;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
@@ -266,7 +267,7 @@ section {
 .nav a {
   text-decoration: none;
   font-size: 1em;
-  padding: 5px;
+  padding: 5px 10px;
   color: black;
 }
 
@@ -329,6 +330,7 @@ footer p {
     margin-bottom: 100px;
     border: 5px solid rgb(145, 144, 144);
   }
+
   .cursor.nav-active {
     transform: scale(1);
   }
@@ -344,18 +346,20 @@ footer p {
   .intro-section img {
     background-color: transparent;
   }
-
+  .wrapper {
+    padding: 0;
+    width: 100%;
+  }
   .page1 {
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 100vw;
   }
-  .right {
+  .wrapper .right {
     width: 100%;
   }
-  .left {
+  .wrapper .left {
     width: 100%;
   }
   .contact {
