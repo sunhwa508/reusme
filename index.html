@@ -3,184 +3,159 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <script
-      src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
-      data-auto-replace-svg="nest"
-    ></script>
+    <title>sunhwa PORTFOLIO</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css?family=Abril+Fatface|Montserrat&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Song+Myung&display=swap"
       rel="stylesheet"
     />
-    <title>SunhwaLee</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
-    <section class="intro-section" id="intro">
-      <img />
-      <div class="logotext">
-        <h2>
-          SUNHWA <br />
-          PORTFOLIO
-        </h2>
-        <hr />
-        <h4>Frontend</h4>
-      </div>
-
-      <div class="slider"></div>
-    </section>
-
-    <div class="page page1 section2" id="page1">
-      <div class="left">
-        <h1>SUNHWA LEE</h1>
-        <h4>I am a creative FRONT-END Developer</h4>
-        <img class="profile" src="./img/photo.jpg" />
-        <h2>About me</h2>
-        함께 일하고 싶은 개발자, <br />프론트엔드 개발자로 성장중인
-        <br />이선화입니다.<br />
-        Hi, I'm Sunhwa Lee! I love programming. This is my portfolio website
-        where I share all of my favroite works. I especially like React. I would
-        like to build a website using React. I enjoy turning complex problems
-        into simple, beautiful and intuitive designs.
-        <div class="contact">
-          <h2>Contact</h2>
-          💌 2017sunhwa@gmail.com <br />
-          📞010-8108-2659
+  <body data-barba="wrapper">
+    <main data-barba="container" data-barba-namespace="home">
+      <header class="nav-header">
+        <h1>
+          <a href="./index.html" id="logo">
+            <h3 id="logotext">SUNHWALEE</h3>
+          </a>
+        </h1>
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
         </div>
-      </div>
-      <div class="vertical-line"></div>
-      <div class="right">
-        <h1>Experiences</h1>
-        <h2>Educations</h2>
-        Educations Gachon | University interactive media<br />
-        가천대학교 | Mar.2012 - Feb.2016 <br />인터랙티브 미디어학과
-        <div class="skills">
-          <h2>Skills</h2>
-          <ul>
-            <h4>HTML</h4>
-          </ul>
-          <ul>
-            <h4>CSS</h4>
-            <li>animation효과</li>
-            <li>flex,grid</li>
-            <li>media query</li>
-            <li>SCSS/Styled components</li>
-          </ul>
-          <ul>
-            <h4>JAVASCRIPT</h4>
-            <li>gsap</li>
-            <li>Event/localstorage</li>
-            <li>ajax</li>
-            <li>ES6</li>
-          </ul>
-          <ul>
-            <h4>REACT.js</h4>
-            <li>RestAPI</li>
-            <li>Redux</li>
-            <li>Hooks</li>
-            <li>Context API</li>
-          </ul>
+      </header>
+
+      <section>
+        <!-- <div class="hero-img">
+          <img src="./img/forest.png" alt="forest image" />
+          <div class="reveal-img"></div>
+        </div> -->
+        <div class="hero-desc introsection">
+          <div class="title">
+            <h2 class="typing">
+              HTML/CSS/JS <span class="mountain-span"><br />PORTFOLIO</span>
+            </h2>
+            <!-- <div class="title-swipe t-swipe1"></div> -->
+          </div>
+          <p></p>
+          <a class="explore mountain-exp section1">Start to Explore</a>
+          <!-- <div class="reveal-text"></div> -->
         </div>
-        <h2>Certifications</h2>
-        <h4>정보처리기사 | 2015 한국산업인력공단</h4>
-        <h4>컴퓨터활용능력 | 2016 대한상공회의소</h4>
-      </div>
-    </div>
+      </section>
 
-    <div class="page page2" id="page2">
-      <h1>PROJECT</h1>
-      <div class="container">
-        <div class="contents">
-          <div class="content">
-            <a href="https://github.com/sunhwa508/ggdata">
-              <img src="./img/content16.png" class="reactimg" />
-              <h3>지역화폐사용처</h3>
-              <p>kakao-map, 공공api</p></a
-            >
-          </div>
-
-          <div class="content">
-            <a href="https://sunhwa508.github.io/html-css-portfolio/.">
-              <img src="./img/content15.png" class="jsimg" />
-              <h3>portfolio in pf</h3>
-              <p>Gsap,ScrollMagic, Modified cursor</p></a
-            >
-          </div>
-
-          <div class="content">
-            <a href="https://github.com/sunhwa508/E-commercial">
-              <img src="./img/content3.png" class="reactimg" />
-              <h3>SUMAZON</h3>
-              <p>Firebase login, Stripe API <br /></p
-            ></a>
-          </div>
+      <section class="hike slide">
+        <div class="hero-img">
+          <img src="./img/netflix.png" alt="image" />
+          <div class="reveal-img"></div>
         </div>
-
-        <div class="contents">
-          <div class="content">
-            <a href="https://github.com/sunhwa508/weather-app">
-              <img src="./img/content1.png" class="reactimg" />
-              <h3>isithot?</h3>
-              <p>
-                Firbase기반 git,fb,google Login system,openweathermap API
-              </p></a
-            >
+        <div class="hero-desc">
+          <div class="title section2">
+            <h2>Netflix <span class="netflix-span">clone.</span></h2>
+            <div class="title-swipe t-swipe2"></div>
           </div>
-          <div class="content">
-            <a href="https://github.com/sunhwa508/moflix">
-              <img src="./img/content2.png" class="reactimg" />
-              <h3>Moflix</h3>
-              <p>Infinite scroll, Search, OMDbAPI</p></a
-            >
-          </div>
-          <div class="content">
-            <a href="https://sunhwa508.github.io/-cloneweb/">
-              <img src="./img/content13.png" class="htmlimg" />
-              <h3>deliver's people</h3>
-              <p>배달의민족 clone coding web</p></a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="page3" id="page3">
-      <footer>
-        <div class="icons">
+          <p>
+            HTML, CSS, JAVASCRIPT<br />
+            <br />
+            스크롤에 따른 헤더메뉴 배경 변화, icon클릭시 슬라이드 이동,<br />
+            이미지 hover에 따른 크기 변화 효과준 반응형 웹.
+          </p>
           <a
-            href="https://www.youtube.com/channel/UCXwBCeiqjOezNcpplFuHX9g?view_as=subscriber"
-            ><i class="fab fa-youtube"></i
-          ></a>
-          <a href="https://codesandbox.io/u/sunhwa508"
-            ><i class="fab fa-codepen"></i
-          ></a>
-          <a href="https://github.com/sunhwa508"
-            ><i class="fab fa-github"></i
-          ></a>
+            href="https://sunhwa508.github.io/netflix-webclone/"
+            class="explore"
+            id="netflix"
+            >Explore</a
+          >
+          <div class="reveal-text"></div>
         </div>
-        <p>@ 2020 Sunhwa Lee.</p>
-      </footer>
-    </div>
+      </section>
 
-    <div class="nav">
-      <div class="navdiv active"><a href="#">intro</a></div>
-      <div class="navdiv">
-        <a href="#page1">Profile</a>
-      </div>
-      <div class="navdiv">
-        <a href="#page2">Projects</a>
-      </div>
-    </div>
+      <section class="fashion slide">
+        <div class="hero-img">
+          <img src="./img/delivery.png" alt= image" />
+          <div class="reveal-img"></div>
+        </div>
+        <div class="hero-desc">
+          <div class="title">
+            <h2>배달의민족 <span class="delivery-span">clone.</span></h2>
+            <div class="title-swipe t-swipe3"></div>
+          </div>
+          <p>
+            HTML, CSS, JAVASCRIPT, fullPage<br />
+            FullPage 라이브러리와 자바스크립트로 구현하였습니다.<br />
+            에니메이션을 이용한 인터렉티브 한 반응형 웹.
+          </p>
+          <a href="https://sunhwa508.github.io/-cloneweb/" class="explore"
+            >Explore</a
+          >
+          <div class="reveal-text"></div>
+        </div>
+      </section>
+
+      <section class="fashion slide">
+        <div class="hero-img">
+          <img src="./img/todolist.png" alt="fashion image" />
+          <div class="reveal-img"></div>
+        </div>
+        <div class="hero-desc">
+          <div class="title">
+            <h2>
+              TodoList <span class="fashion-span"><br />with JS.</span>
+            </h2>
+            <div class="title-swipe t-swipe5"></div>
+          </div>
+          <p>
+            HTML, CSS, JAVASCRIPT
+          </p>
+          <a href="https://9jnn7.csb.app/" class="explore">Explore</a>
+          <div class="reveal-text"></div>
+        </div>
+      </section>
+
+      <nav class="nav-bar">
+        <ul class="nav-links">
+          <h3><a href="#">HTML</a></h3>
+          <h3><a href="#">CSS</a></h3>
+          <h3><a href="#">JAVASCRIPT</a></h3>
+          <h3><a href="#">REACT</a></h3>
+          <h3><a href="#">Stay in touch.</a></h3>
+        </ul>
+        <div class="contact">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
+            dolorem praesentium ea amet error quidem natus. Magnam explicabo sed
+            tenetur?
+          </p>
+        </div>
+      </nav>
+    </main>
 
     <div class="cursor">
       <span class="cursor-text"></span>
-      <span class="cursor-text2"></span>
     </div>
+    <div class="swipe swipe1"></div>
+    <div class="swipe swipe2"></div>
+    <div class="swipe swipe3"></div>
+
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"
+      integrity="sha256-2p2tRZlPowp3P/04Pw2rqVCSbhyV/IB7ZEVUglrDS/c="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"
+      integrity="sha256-XBVALc3QsDSQiDtiaBwNZ2rxCJTHzlUhhlDQ84J8bw8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"></script>
-    <script src="app.js"></script>
+    <script
+      crossorigin="anonymous"
+      src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CIntersectionObserver"
+    ></script>
+    <script src="./app.js"></script>
   </body>
 </html>

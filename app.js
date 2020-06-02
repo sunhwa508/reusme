@@ -1,114 +1,283 @@
-// //smooth sroll
-// function smoothScroll(target, duration) {
-//   var target = document.querySelector(target);
-//   var targetPosition = target.getBoundingClientRect().top;
-//   var startPosition = window.pageYOffset;
-//   var distance = targetPosition - startPosition;
-//   var startTime = null;
+let controller;
+let slideScene;
+let pageScene;
+let detailScene;
 
-//   function animation(currentTime) {
-//     if (startTime === null) startTime = currentTime; //부드럽게 보이게 하기 위해
-//     var timeElapsed = currentTime - startTime;
-//     //진짜 시간과 페이지 로그된 후 시간
-//     // console.log(startTime, currentTime);
-//     var run = ease(timeElapsed, startPosition, distance, duration);
-//     window.scrollTo(0, run);
-//     if (timeElapsed < duration) requestAnimationFrame(animation);
-//     // console.log("timeElapsed:" + timeElapsed, "duration" + duration);
-//   }
-
-//   function ease(t, b, c, d) {
-//     t /= d / 2;
-//     if (t < 1) return (c / 2) * t * t * t + b;
-//     t -= 2;
-//     return (c / 2) * (t * t * t + 2) + b;
-//   }
-//   requestAnimationFrame(animation);
-// }
-
-// var section1 = document.querySelector(".section1");
-// var section2 = document.querySelector(".section2");
-
-// section1.addEventListener("click", function () {
-//   smoothScroll(".section2", 100);
-// });
-
-//intro 효과
-const hero = document.querySelector(".intro-section img");
-const headline = document.querySelector(".logotext");
-const slider = document.querySelector(".slider");
-
-const tl = new TimelineMax();
-
-tl.fromTo(hero, 1, { height: "0%" }, { height: "80%", ease: Power2.easeInOut })
-  .fromTo(
-    hero,
-    1.2,
-    { width: "100%" },
-    { width: "70%", ease: Power2.easeInOut }
-  )
-  .fromTo(
-    headline,
-    1.2,
-    { x: "-300%" },
-    { x: "0", ease: Power2.easeInOut },
-    "-=1.2"
-  )
-  .fromTo(
-    slider,
-    1.2,
-    { x: "200%" },
-    { x: "0", ease: Power2.easeInOut },
-    "-=1.2"
-  );
-
-//cursor
+function animateSlides() {
+  //Init Controller
+  controller = new ScrollMagic.Controller();
+  //Select some things
+  const sliders = document.querySelectorAll(".slide");
+  const nav = document.querySelector(".nav-header");
+  //Loop over each sllide
+  sliders.forEach((slide, index, slides) => {
+    const revealImg = slide.querySelector(".reveal-img");
+    const img = slide.querySelector("img");
+    const revealText = slide.querySelector(".reveal-text");
+    //GSAP
+    const slideTl = gsap.timeline({
+      defaults: { duration: 1, ease: "power2.inOut" },
+    });
+    slideTl.fromTo(revealImg, { x: "0%" }, { x: "100%" });
+    slideTl.fromTo(img, { scale: 2 }, { scale: 1 }, "-=1");
+    slideTl.fromTo(revealText, { x: "0%" }, { x: "100%" }, "-=0.75");
+    //Create Scene
+    slideScene = new ScrollMagic.Scene({
+      triggerElement: slide,
+      triggerHook: 0.25,
+      reverse: false,
+    })
+      .setTween(slideTl)
+      // .addIndicators({
+      //   colorStart: "white",
+      //   colorTrigger: "white",
+      //   name: "slide"
+      // })
+      .addTo(controller);
+    //New ANimation
+    const pageTl = gsap.timeline();
+    let nextSlide = slides.length - 1 === index ? "end" : slides[index + 1];
+    pageTl.fromTo(nextSlide, { y: "0%" }, { y: "50%" });
+    pageTl.fromTo(slide, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.5 });
+    pageTl.fromTo(nextSlide, { y: "50%" }, { y: "0%" }, "-=0.5");
+    //Create new scene
+    pageScene = new ScrollMagic.Scene({
+      triggerElement: slide,
+      duration: "100%",
+      triggerHook: 0,
+    })
+      // .addIndicators({
+      //   colorStart: "white",
+      //   colorTrigger: "white",
+      //   name: "page",
+      //   indent: 200
+      // })
+      .setPin(slide, { pushFollowers: false })
+      .setTween(pageTl)
+      .addTo(controller);
+  });
+}
 const mouse = document.querySelector(".cursor");
 const mouseTxt = mouse.querySelector("span");
-const nav = document.querySelector(".nav");
-
+const burger = document.querySelector(".burger");
 function cursor(e) {
   mouse.style.top = e.pageY + "px";
   mouse.style.left = e.pageX + "px";
 }
 function activeCursor(e) {
   const item = e.target;
-
-  if (item.classList.contains("reactimg")) {
+  if (item.id === "logotext" || item.classList.contains("burger")) {
+    mouse.classList.add("nav-active");
+  } else {
+    mouse.classList.remove("nav-active");
+  }
+  if (item.classList.contains("explore")) {
     mouse.classList.add("explore-active");
-    // gsap.to(".title-swipe", 1, { y: "0%" });
-    mouseTxt.innerText = "REACT";
+    gsap.to(".title-swipe", 1, { y: "0%" });
+    mouseTxt.innerText = "Tap";
   } else {
     mouse.classList.remove("explore-active");
     mouseTxt.innerText = "";
-    // gsap.to(".title-swipe", 1, { y: "100%" });
+    gsap.to(".title-swipe", 1, { y: "100%" });
   }
-
-  if (item.classList.contains("jsimg")) {
-    mouse.classList.add("explore-active");
-    // gsap.to(".title-swipe", 1, { y: "0%" });
-    mouseTxt.innerText = "JAVASCIPRT";
-  }
-  if (item.classList.contains("htmlimg")) {
-    mouse.classList.add("explore-active");
-    // gsap.to(".title-swipe", 1, { y: "0%" });
-    mouseTxt.innerText = "HTML/CSS";
+}
+function navToggle(e) {
+  if (!e.target.classList.contains("active")) {
+    e.target.classList.add("active");
+    gsap.to(".line1", 0.5, { rotate: "45", y: 5, background: "black" });
+    gsap.to(".line2", 0.5, { rotate: "-45", y: -5, background: "black" });
+    gsap.to("#logo", 1, { color: "black" });
+    gsap.to(".nav-bar", 1, { clipPath: "circle(2500px at 100% -10%)" });
+    document.body.classList.add("hide");
+  } else {
+    e.target.classList.remove("active");
+    gsap.to(".line1", 0.5, { rotate: "0", y: 0, background: "white" });
+    gsap.to(".line2", 0.5, { rotate: "0", y: 0, background: "white" });
+    gsap.to("#logo", 1, { color: "white" });
+    gsap.to(".nav-bar", 1, { clipPath: "circle(50px at 100% -10%)" });
+    document.body.classList.remove("hide");
   }
 }
 
+window.addEventListener("hashchange", () => {
+  window.location.reload(true);
+});
+
+//Barba Page Transitions
+const logo = document.querySelector("#logo");
+
+barba.init({
+  views: [
+    {
+      namespace: "home",
+      beforeEnter() {
+        animateSlides();
+        logo.href = "#";
+      },
+      beforeLeave() {
+        slideScene.destroy();
+        pageScene.destroy();
+        controller.destroy();
+      },
+    },
+    {
+      namespace: "Netflix",
+      beforeEnter() {
+        animateSlides();
+        window.location.reload(true);
+        logo.href = "https://sunhwa508.github.io/netflix-webclone/";
+      },
+    },
+    {
+      namespace: "deliver",
+      beforeEnter() {
+        animateSlides();
+        window.location.reload(true);
+        logo.href = "https://sunhwa508.github.io/-cloneweb/";
+      },
+    },
+
+    {
+      namespace: "todoList",
+      beforeEnter() {
+        animateSlides();
+        window.location.reload(true);
+        logo.href = "https://9jnn7.csb.app/";
+      },
+    },
+  ],
+
+  transitions: [
+    {
+      leave({ current, next }) {
+        const done = this.async();
+        //An Animation
+        const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+        tl.fromTo(current.container, 1, { opacity: 1 }, { opacity: 0 });
+        tl.fromTo(
+          ".swipe",
+          0.75,
+          { x: "-100%" },
+          { x: "0%", onComplete: done },
+          "-=0.5"
+        );
+      },
+      enter({ current, next }) {
+        let done = this.async();
+        //Scroll to the top
+        window.scrollTo(0, 0);
+        //An Animation
+        const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+        tl.fromTo(
+          ".swipe",
+          1,
+          { x: "0%" },
+
+          { x: "100%", stagger: 0.2, onComplete: done }
+        );
+        tl.fromTo(next.container, 1, { opacity: 0 }, { opacity: 1 });
+        tl.fromTo(
+          ".nav-header",
+          1,
+          { y: "-100%" },
+          { y: "0%", ease: "power2.inOut" },
+          "-=1.5"
+        );
+      },
+    },
+  ],
+});
+
+function detailAnimation() {
+  controller = new ScrollMagic.Controller();
+  const slides = document.querySelectorAll(".detail-slide");
+  slides.forEach((slide, index, slides) => {
+    const slideTl = gsap.timeline({ defaults: { duration: 1 } });
+    let nextSlide = slides.length - 1 === index ? "end" : slides[index + 1];
+    const nextImg = nextSlide.querySelector("img");
+    slideTl.fromTo(slide, { opacity: 1 }, { opacity: 0 });
+    slideTl.fromTo(nextSlide, { opacity: 0 }, { opacity: 1 }, "-=1");
+    slideTl.fromTo(nextImg, { x: "50%" }, { x: "0%" });
+    //Scene
+    detailScene = new ScrollMagic.Scene({
+      triggerElement: slide,
+      duration: "100%",
+      triggerHook: 0,
+    })
+      .setPin(slide, { pushFollowers: false })
+      .setTween(slideTl)
+      // .addIndicators({
+      //   colorStart: "white",
+      //   colorTrigger: "white",
+      //   name: "detailScene"
+      // })
+      .addTo(controller);
+  });
+}
+
+//EventListeners
+burger.addEventListener("click", navToggle);
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
 
-//nav
-const navdivs = document.querySelectorAll(".navdiv");
+// Typing
+const texts = ["HTML", "CSS", "portfolio"];
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
 
-console.log(navdivs);
-navdivs.forEach((item) => {
-  item.addEventListener("click", (e) => {
-    const active = document.querySelector(".active");
-    if (active) {
-      active.classList.remove("active");
-    }
-    e.target.classList.add("active");
-  });
+(function type() {
+  if (count === texts.length) {
+    count = 0;
+  }
+  currentText = texts[count];
+  letter = currentText.slice(0, ++index);
+
+  document.querySelector(".typing").textContent = letter;
+  if (letter.length === currentText.length) {
+    count++;
+    index = 0;
+  }
+  setTimeout(type, 200);
+})();
+
+//smooth sroll
+function smoothScroll(target, duration) {
+  var target = document.querySelector(target);
+  var targetPosition = target.getBoundingClientRect().top;
+  var startPosition = window.pageYOffset;
+  var distance = targetPosition - startPosition;
+  var startTime = null;
+
+  function animation(currentTime) {
+    if (startTime === null) startTime = currentTime; //부드럽게 보이게 하기 위해
+    var timeElapsed = currentTime - startTime;
+    //진짜 시간과 페이지 로그된 후 시간
+    // console.log(startTime, currentTime);
+    var run = ease(timeElapsed, startPosition, distance, duration);
+    window.scrollTo(0, run);
+    if (timeElapsed < duration) requestAnimationFrame(animation);
+    // console.log("timeElapsed:" + timeElapsed, "duration" + duration);
+  }
+
+  function ease(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return (c / 2) * t * t * t + b;
+    t -= 2;
+    return (c / 2) * (t * t * t + 2) + b;
+  }
+
+  requestAnimationFrame(animation);
+}
+
+var section1 = document.querySelector(".section1");
+var section2 = document.querySelector(".section2");
+
+section1.addEventListener("click", function () {
+  smoothScroll(".section2", 1000);
+});
+
+section2.addEventListener("click", function () {
+  smoothScroll(".section1", 1000);
 });
